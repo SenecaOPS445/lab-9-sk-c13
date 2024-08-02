@@ -1,0 +1,38 @@
+
+PLAY [sk-c13] ******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [sk-c13]
+
+TASK [Update Apache] ***********************************************************
+ok: [sk-c13]
+
+TASK [Install EPEL repository] *************************************************
+ok: [sk-c13]
+
+TASK [Remove 'tree' package] ***************************************************
+ok: [sk-c13]
+
+TASK [Set hostname] ************************************************************
+ok: [sk-c13]
+
+TASK [Create a new user with sudo access] **************************************
+ok: [sk-c13]
+
+TASK [Configure SSH access for new user] ***************************************
+ok: [sk-c13]
+
+TASK [Setup directory structure for labs] **************************************
+ok: [sk-c13] => (item=lab1)
+ok: [sk-c13] => (item=lab2)
+ok: [sk-c13] => (item=lab3)
+ok: [sk-c13] => (item=lab4)
+ok: [sk-c13] => (item=lab5)
+ok: [sk-c13] => (item=lab6)
+ok: [sk-c13] => (item=lab7)
+ok: [sk-c13] => (item=lab8)
+ok: [sk-c13] => (item=lab9)
+
+PLAY RECAP *********************************************************************
+sk-c13                     : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
