@@ -1,0 +1,55 @@
+---
+- hosts: sk-c13
+  user: student
+  become: yes
+  tasks:
+    - name: Update Apache
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Install EPEL repository
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Remove 'tree' package
+      yum:
+        name: tree
+        state: absent
+
+    - name: Set hostname
+      hostname:
+        name: "sk-c13"
+
+    - name: Create a new user with sudo access
+      user:
+        name: "sagar"
+        groups: wheel
+        state: present
+        password: "$6$$VCSoGjn22d.ifTNEaijGbMMSqajTedh/HYPnOkuj0ky3sAiCCIx.rMZj8d20v2qil5zCOZF21zmm959VQVcEl0"  
+
+    - name: Configure SSH access for new user
+      authorized_key:
+        user: "sagar"
+        state: present
+        key: "{{ lookup('file', '/home/sagarkc/.ssh/id_rsa.pub') }}" 
+
+    - name: Setup directory structure for labs
+      file:
+        path: "/home/sagar/ops445/lab{{ item }}"
+        state: directory
+        owner: "sagar"
+        group: "sagar"
+        mode: '0755'
+      loop:
+        - lab1
+        - lab2
+        - lab3
+        - lab4
+        - lab5
+        - lab6
+        - lab7
+        - lab8
+        - lab9
+
